@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import sequelize from './src/database/sequelize.js'
 
 const app = express()
 
