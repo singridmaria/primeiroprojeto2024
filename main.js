@@ -1,5 +1,7 @@
 import express from 'express'
-import { connection } from './src/mysql-connect.js'
+
+import cors from 'cors'
+import sequelize from './src/database/sequelize.js'
 
 
 const app = express()
