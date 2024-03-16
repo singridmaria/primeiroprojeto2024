@@ -1,14 +1,19 @@
 import express from 'express'
-import cors from 'cors'
+import { connection } from './src/mysql-connect.js'
+
 
 const app = express()
+const routes = express.Router();
 
 app.use(express.json())//Configurar para receber dados do tipo JSON
-app.use(cors())//Middleware para controlar requisições --> Intermediador
+app.use(routes)//Middleware para controlar requisições --> Intermediador
 
-app.get('/', (request, response) => {
-    return response.json('Resposta do servidor')
-})
+routes.get('/', async (request, response)  => {
+    const [rows] = await connection.query("show tables");
+    
+    return response.status(200).json(rows);
+    
+});
 
 app.listen(4000,() => {
     console.log('Servidor está funcionando')
