@@ -17,6 +17,16 @@ routes.get('/', async (request, response)  => {
     
 });
 
+app.post('programming_languages',async(request, response) => {
+    const data = request.body
+    const query = await connection.execute('',[])
+
+    return response.json()
+})
+
 app.listen(4000,() => {
     console.log('Servidor está funcionando')
+
+
+
 })
