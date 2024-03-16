@@ -17,7 +17,7 @@ routes.get('/', async (request, response)  => {
     
 });
 
-app.post('programming_languages',async(request, response) => {
+app.post('programming-languages',async(request, response) => {
     const data = request.body
     const query = await connection.execute('',[])
 
