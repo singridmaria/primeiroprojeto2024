@@ -10,8 +10,9 @@ const routes = express.Router();
 app.use(express.json())//Configurar para receber dados do tipo JSON
 app.use(routes)//Middleware para controlar requisições --> Intermediador
 
-routes.get('/', async (request, response)  => {
-    const [rows] = await connection.query("show tables");
+app.get('/', async (request, response)  => {
+    const data = connection.execute('select * from user')
+    response.json('App is up')
     
     return response.status(200).json(rows);
     
@@ -24,9 +25,7 @@ app.post('programming-languages',async(request, response) => {
     return response.json()
 })
 
-app.listen(4000,() => {
-    console.log('Servidor está funcionando')
-
-
+app.listen(port,() => {
+    console.log(`Server is running on port ${port}`)
 
 })
