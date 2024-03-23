@@ -1,16 +1,17 @@
 import express from 'express'
-
+import { connection } from './src/mysql-connect.js'
 import cors from 'cors'
 import sequelize from './src/database/sequelize.js'
 
-
+const port = 8085
 const app = express()
 const routes = express.Router();
 
 app.use(express.json())//Configurar para receber dados do tipo JSON
 app.use(routes)//Middleware para controlar requisições --> Intermediador
 
-app.get('/', async (request, response)  => {
+//ROTAS
+app.get('/', async /*<- Função */ (request, response)  => {
     const data = connection.execute('select * from user')
     response.json('App is up')
     
